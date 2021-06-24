@@ -6,6 +6,13 @@
 	<artifactId>loja</artifactId>
 	<version>1.0.0</version>
 
+	<properties>
+		<!-- <cucumber.version>6.2.0</cucumber.version> <maven.compiler.version>3.8.1</maven.compiler.version> 
+			<maven.surefire.version>2.22.1</maven.surefire.version> -->
+		<java.version>1.8</java.version>
+		<maven.compiler.version>3.8.1</maven.compiler.version>
+	</properties>
+
 	<dependencies>
 		<!-- https://mvnrepository.com/artifact/junit/junit -->
 		<dependency>
@@ -22,6 +29,35 @@
 			<version>1.4.15</version>
 		</dependency>
 	</dependencies>
+
+	<build>
+		<finalName>loja</finalName>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>${maven.compiler.version}</version>
+				<configuration>
+					<encoding>UTF-8</encoding>
+					<source>${java.version}</source>
+					<target>${java.version}</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.jacoco</groupId>
+				<artifactId>jacoco-maven-plugin</artifactId>
+				<version>0.8.5</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>prepare-agent</goal>
+							<goal>report</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
 
 	<repositories>
 		<repository>
